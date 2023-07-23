@@ -16,7 +16,7 @@ const ItemDetail = ({ product }) => {
             <Card.Title>Producto: {product.name}</Card.Title>
             <Card.Text>Descripción: {product.description}</Card.Text>
             <Card.Text>Categoría: {product.category}</Card.Text>
-            <Card.Text>Price: {product.price}</Card.Text>
+            <Card.Text>Precio: {product.price}</Card.Text>
             <Card.Text>Stock: {product.stock}</Card.Text>
           </Card.Body>
         </Card>
