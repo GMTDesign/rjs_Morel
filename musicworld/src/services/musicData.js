@@ -146,11 +146,11 @@ const products = [
     }
 ]
 
-  const getProducts = (id) => {
+/*  const getProducts = (id) => {
     return new Promise ((resolve, reject) => {
       setTimeout ( () => {
         resolve(id ? products.find(prod => prod.id === Number(id)) : products)
       }, 3000)
     })
   }
-  export default getProducts 
+  export default getProducts */

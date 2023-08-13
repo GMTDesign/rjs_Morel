@@ -13,7 +13,7 @@ const ItemCount = ( { initial=1, stock=15, onAdd}) => {
         }
     }
     const onAddHandle = () =>{
-        onAdd(`Cantidad:, ${counter}`)
+        onAdd(counter)
     }
     return(
         <div className='container-fluid col-6'>

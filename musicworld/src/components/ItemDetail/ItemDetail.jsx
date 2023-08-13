@@ -1,12 +1,21 @@
 import Card from 'react-bootstrap/Card'
-
+import Button from 'react-bootstrap/esm/Button'
 import ItemCount from '../ItemCount/ItemCount'
+import { useContext, useState } from 'react'
+import { useCartContext } from '../../context/CartContext'
+import { Link } from 'react-router-dom'
+
+
+
 const ItemDetail = ({ product }) => {
+  const { addToCart, cartItems } = useCartContext()
+  const [isInCart, setIsInCart] = useState(false)
 
   const onAdd = (count) => {
-    console.log(count)
+    addToCart({ ...product, count: count })
+    setIsInCart(true)
   }
-
+  console.log(cartItems)
   return (
     <>
       <div className="container-fluid row">
@@ -21,7 +30,22 @@ const ItemDetail = ({ product }) => {
           </Card.Body>
         </Card>
         <div className='col-6 mt-5'>
-        <ItemCount onAdd={onAdd} />
+          {isInCart
+            ?
+            <>
+              <Link to="/cart">
+                <Button variant="outline-primary m-2 w-250">Ir al Carrito</Button>
+              </Link>
+              <Link to="/">
+                <Button variant="outline-primary m-2 w-250">Seguir comprando</Button>
+              </Link>
+
+            </>
+
+            :
+            <ItemCount onAdd={onAdd} />
+          }
+
         </div>
       </div>
     </>

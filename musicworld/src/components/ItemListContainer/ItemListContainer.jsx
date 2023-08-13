@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import getProducts from "../../services/musicData"
 import { useParams } from "react-router-dom"
 import ItemList from "../ItemList/ItemList"
+import { getProducts, getProductsByCategory } from "../../services/firebase"
 
 const ItemListContainer = (props) => {
   const { greeting } = props
@@ -9,18 +9,19 @@ const ItemListContainer = (props) => {
   const [loading, setLoading] = useState(true)
   const { categoryId } = useParams()
 
-  const requestProducts = async () => {
-    const response = await getProducts()
-    categoryId
-      ?
-      setProducts(response.filter(items => items.category === categoryId))
-      :
-      setProducts(response)
-
-      setLoading(false)
-  }
-
+  
   useEffect(() => {
+    const requestProducts = async () => {
+      let response = categoryId
+      ? await getProductsByCategory(categoryId)
+      : await getProducts()
+      
+
+      setProducts(response)
+  
+      setLoading(false)
+    }
+  
     requestProducts()
   }, [categoryId])
 
@@ -29,7 +30,7 @@ const ItemListContainer = (props) => {
       {
         loading
           ?
-          <h1>{greeting}</h1>
+          <h1 className="m-5">{greeting}</h1>
           :
           <ItemList products={products} />
       }

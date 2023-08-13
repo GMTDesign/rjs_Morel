@@ -1,8 +1,17 @@
+import { Link } from "react-router-dom"
+import CartContainer from "../CartContainer/CartContainer"
+import { useCartContext } from "../../context/CartContext"
+
 const CartWidget = () => {
+  const {totalCount} = useCartContext()
   return (
     <>
-    <img src="/carrito.png" className="cart" alt="cart" />
-    <span>1</span>
+      <Link to="/cart">
+        <img src="/carrito.png" className="cart" alt="cart" />
+        {totalCount() !== 0 && <span>{totalCount()}</span>}
+
+      </Link>
+
     </>
   )
 }
