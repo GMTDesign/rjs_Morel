@@ -1,34 +1,22 @@
 import { useCartContext } from "../../context/CartContext"
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom"
+import Cart from "../Cart/Cart"
 
 const CartContainer = () => {
-    const { cartItems, totalPrice, removeItem, clearCart } = useCartContext()
+    const { cartItems, totalPrice, clearCart } = useCartContext()
     return (
         <div>
             {cartItems.map(item => <div key={item.id}>
-                <Container className="m-2">
-                    <Row>
-                        <Col><img className="w-75" src={`/${item.image}`}></img></Col>
-                        <Col>Producto: {item.name}</Col>
-                        <Col>Precio: $ {item.price}</Col>
-                        <Col>Cantidad: {item.count}</Col>
-                        <Col>Subtotal: $ {item.price * item.count}</Col>
-                        <Col>
-                            <Button onClick={() => { removeItem(item.id) }}>X</Button>
-                        </Col>
-                    </Row>
-                </Container>
+                <Cart item={item}/>
             </div>)}
             
                 {totalPrice() !== 0
                     ?
                     <>
-                        <h3>Total de la compra: $ {totalPrice()}</h3>
-                        <Button variant="primary" onClick={clearCart}>Vaciar carrito</Button>
+                        <h3 className="m-5">Total de la compra: $ {totalPrice()}</h3>
+                        <Button className="m-5" variant="primary" onClick={clearCart}>Confirmar compra</Button>
+                        <Button className="m-5" variant="primary" onClick={clearCart}>Vaciar carrito</Button>
                     </>
 
                     :
