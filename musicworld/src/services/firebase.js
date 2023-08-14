@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDoc, getDocs, query, where, doc } from "firebase/firestore"
+import { getFirestore, collection, getDoc, getDocs, query, where, doc, addDoc } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAiU4SFtn7027gxPOXYuZRNpapIMLURhWg",
@@ -39,4 +39,16 @@ const getProductById = async (id) =>{
   }
 }
 
-export { getProducts, getProductsByCategory, getProductById }
+const newOrder = async (orderInfo) =>{
+  const ordersRef = collection(db, "orders")
+  const orderDoc = await addDoc(ordersRef, orderInfo)
+  return (orderDoc.id)
+}
+
+const getOrder = async (id) =>{
+  const orderRef = doc(db, "orders", id)
+  const orderSnapshot = await getDoc(orderRef)
+  return {...orderSnapshot.data(), id: orderSnapshot.id}
+}
+
+export { getProducts, getProductsByCategory, getProductById, newOrder, getOrder }

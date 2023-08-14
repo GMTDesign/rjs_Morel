@@ -15,7 +15,10 @@ const CartContainer = () => {
                     ?
                     <>
                         <h3 className="m-5">Total de la compra: $ {totalPrice()}</h3>
-                        <Button className="m-5" variant="primary" onClick={clearCart}>Confirmar compra</Button>
+                        <Link to="/checkout">
+                            <Button className="m-5" variant="primary">Comprar</Button>
+                        </Link>
+                        
                         <Button className="m-5" variant="primary" onClick={clearCart}>Vaciar carrito</Button>
                     </>
 

@@ -8,13 +8,17 @@ import { Link } from 'react-router-dom'
 
 
 const ItemDetail = ({ product }) => {
-  const { addToCart, cartItems } = useCartContext()
+  const { addToCart, getItem, cartItems } = useCartContext()
   const [isInCart, setIsInCart] = useState(false)
 
   const onAdd = (count) => {
     addToCart({ ...product, count: count })
     setIsInCart(true)
   }
+
+  const itemInCart = getItem(product.id)
+  const maxCount = itemInCart ? product.stock - itemInCart.count : product.stock
+
   console.log(cartItems)
   return (
     <>
@@ -43,7 +47,7 @@ const ItemDetail = ({ product }) => {
             </>
 
             :
-            <ItemCount onAdd={onAdd} />
+            <ItemCount stock={maxCount} onAdd={onAdd} />
           }
 
         </div>

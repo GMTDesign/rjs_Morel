@@ -22,6 +22,10 @@ export const CartContextProvider = ({children}) => {
 
     const totalPrice = () => cartItems.reduce((count, item) => count += (item.count * item.price), 0)
 
+    const getItem = (id) =>{
+        return cartItems.find((item) => item.id === id)
+    }
+
     const removeItem = (id) => setCartItems(cartItems.filter((item) => item.id !== id))
 
     const clearCart = () =>{
@@ -34,6 +38,7 @@ export const CartContextProvider = ({children}) => {
             addToCart,
             totalCount,
             totalPrice,
+            getItem,
             removeItem,
             clearCart
         }}>
