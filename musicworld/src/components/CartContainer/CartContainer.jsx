@@ -16,15 +16,15 @@ const CartContainer = () => {
                 <>
                     <h3 className="m-5">Total de la compra: $ {totalPrice()}</h3>
                     <Link to="/checkout">
-                        <Button className="m-5" variant="primary">Comprar</Button>
+                        <Button className="m-5" variant="outline-success">Comprar</Button>
                     </Link>
-                    <Button className="m-5" variant="primary" onClick={clearCart}>Vaciar carrito</Button>
+                    <Button className="m-5" variant="outline-primary" onClick={clearCart}>Vaciar carrito</Button>
                 </>
                 :
                 <>
                     <h3 className="m-5">No hay productos en el carrito</h3>
                     <Link to="/">
-                        <Button variant="primary m-5">Ir al Inicio</Button>
+                        <Button variant="outline-primary m-5">Ir al Inicio</Button>
                     </Link>
                 </>
             }

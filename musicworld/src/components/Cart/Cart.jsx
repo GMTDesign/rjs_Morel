@@ -15,7 +15,7 @@ const Cart = ({ item }) => {
         <Col>Cantidad: {item.count}</Col>
         <Col>Subtotal: $ {item.price * item.count}</Col>
         <Col>
-          <Button onClick={() => { removeItem(item.id) }}>X</Button>
+          <Button variant="outline-danger" onClick={() => { removeItem(item.id) }}>X</Button>
         </Col>
       </Row>
     </Container>

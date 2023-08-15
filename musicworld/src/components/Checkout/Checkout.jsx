@@ -18,7 +18,7 @@ const Checkout = () => {
         const orderInfo = {
             buyer: buyer,
             date: new Date(),
-            items: cartItems,
+            items: cartItems.map(({ name, price, count }) => ({ name, price, count })),
             total: totalPrice()
         }
         try {
@@ -50,7 +50,6 @@ const Checkout = () => {
         const newState = { ...buyer }
         newState[field] = value
         setBuyer(newState)
-        console.log(evt.target.name, evt.target.value)
     }
 
     const resetForm = (evt) => {
@@ -64,7 +63,8 @@ const Checkout = () => {
     return (
         <div>
             <h2 className="m-5">Completa el formulario de compra</h2>
-            <form className="container-fluid col-6">
+            <div className="container-fluid d-flex justify-content-center">
+            <form>
                 <label htmlFor="name">Ingrese su nombre y apellido</label><br />
                 <input
                     type="text"
@@ -90,9 +90,16 @@ const Checkout = () => {
                     onChange={handleOnChange}
                 /><br />
             </form>
-            <div className="d-flex m-5">
+            </div>
+
+            <div className="container-fluid d-flex justify-content-center">
                 <Button className="m-5" variant="outline-primary" onClick={resetForm}>Cancelar</Button>
-                <Button className="m-5" variant="outline-primary" onClick={handleCheckout}>Confirmar compra</Button>
+                <Button 
+                type ="submit"
+                className="m-5" 
+                variant="outline-success" 
+                disabled= {!(buyer.name !== "" && buyer.phone !== "" && buyer.email !== "")}
+                onClick={handleCheckout}>Generar Orden</Button>
             </div>
         </div>
     )

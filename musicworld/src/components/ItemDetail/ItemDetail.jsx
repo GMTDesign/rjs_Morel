@@ -21,8 +21,8 @@ const ItemDetail = ({ product }) => {
   const maxCount = itemInCart ? product.stock - itemInCart.count : product.stock
   return (
     <>
-      <div className="container-fluid row">
-        <Card className='col-6 ms-5 mt-5' style={{ width: '18rem' }}>
+      <div className="container-fluid d-flex justify-content-center row">
+        <Card className='ms-5 mt-5' style={{ width: '18rem' }}>
           <Card.Img variant="top" src={`/${product.image}`} />
           <Card.Body>
             <Card.Title>Producto: {product.name}</Card.Title>
@@ -51,7 +51,7 @@ const ItemDetail = ({ product }) => {
             ?
             <>
               <Link to="/cart">
-                <Button variant="outline-primary m-2 w-250">Ir al Carrito</Button>
+                <Button variant="outline-success m-2 w-250">Ir al Carrito</Button>
               </Link>
               <Link to="/">
                 <Button variant="outline-primary m-2 w-250">Seguir comprando</Button>
