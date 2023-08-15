@@ -17,9 +17,8 @@ const ItemDetail = ({ product }) => {
   }
 
   const itemInCart = getItem(product.id)
-  const maxCount = itemInCart ? product.stock - itemInCart.count : product.stock
 
-  console.log(cartItems)
+  const maxCount = itemInCart ? product.stock - itemInCart.count : product.stock
   return (
     <>
       <div className="container-fluid row">
@@ -29,8 +28,22 @@ const ItemDetail = ({ product }) => {
             <Card.Title>Producto: {product.name}</Card.Title>
             <Card.Text>Descripción: {product.description}</Card.Text>
             <Card.Text>Categoría: {product.category}</Card.Text>
-            <Card.Text>Precio: {product.price}</Card.Text>
-            <Card.Text>Stock: {product.stock}</Card.Text>
+            {product.discount
+              ?
+              <>
+                <Card.Text>Precio: {product.price}</Card.Text>
+                <Card.Text style={{ color: 'green' }} >Precio con descuento: {product.price - product.price * product.discount / 100}</Card.Text>
+              </>
+              :
+              <Card.Text>Precio: {product.price}</Card.Text>
+            }
+            {product.stock !== 0
+              ?
+              <Card.Text>Stock: {product.stock}</Card.Text>
+              :
+              <Card.Text>No hay stock disponible</Card.Text>
+            }
+            {product.freeDelivery && <Card.Text style={{ color: 'red' }}  >Envío gratis</Card.Text>}
           </Card.Body>
         </Card>
         <div className='col-6 mt-5'>
@@ -43,13 +56,10 @@ const ItemDetail = ({ product }) => {
               <Link to="/">
                 <Button variant="outline-primary m-2 w-250">Seguir comprando</Button>
               </Link>
-
             </>
-
             :
             <ItemCount stock={maxCount} onAdd={onAdd} />
           }
-
         </div>
       </div>
     </>

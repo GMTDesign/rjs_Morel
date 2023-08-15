@@ -4,22 +4,17 @@ import "./Item.css"
 import { Link } from 'react-router-dom'
 
 const Item = (product) => {
-
     return (
-        
-        
-            <Card className='col-3 m-2' style={{ width: '14rem' }}>
-                <Card.Img className='imgSize' variant="top" src={`/${product.image}`} />
-                <Card.Body>
-                    <Card.Title>Producto: {product.name}</Card.Title>
-                    <Card.Text>Categoría: {product.category}</Card.Text>
-                    <Link to={`/detail/${product.id}`}>
-                        <Button variant="primary">Ver Detalle</Button>
-                    </Link>
-                </Card.Body>
-            </Card>
-        
-
+        <Card className='col-3 m-2' style={{ width: '14rem' }}>
+            <Card.Img className='imgSize' variant="top" src={`/${product.image}`} />
+            <Card.Body>
+                <Card.Title>Producto: {product.name}</Card.Title>
+                <Card.Text>Categoría: {product.category}</Card.Text>
+                <Link to={`/detail/${product.id}`}>
+                    <Button variant="primary">Ver Detalle</Button>
+                </Link>
+            </Card.Body>
+        </Card>
     )
 }
 

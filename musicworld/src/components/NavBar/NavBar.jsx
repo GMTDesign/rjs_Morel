@@ -11,15 +11,15 @@ const NavBar = () => {
         <>
             <Navbar expand="lg" className="navColor">
                 <Container>
-                    <img src="/mwLogo.png" className="logo" alt="MW logo" />    
+                    <img src="/mwLogo.png" className="logo" alt="MW logo" />
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className='me-auto'>
                             <NavLink className='me-3' to="/">Inicio</NavLink>
                             <NavLink className='me-3' to="/category/viento">Instrumentos de Viento</NavLink>
                             <NavLink className='me-3' to="/category/cuerda">Instrumentos de Cuerda</NavLink>
-                            <NavLink className='me-3' to="/category/percusion">Instrumentos de Percusión</NavLink>      
-                            <CartWidget />                                                 
+                            <NavLink className='me-3' to="/category/percusion">Instrumentos de Percusión</NavLink>
+                            <CartWidget />
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

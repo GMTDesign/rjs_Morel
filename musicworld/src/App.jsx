@@ -17,8 +17,8 @@ function App() {
           <Route path='/category/:categoryId' element={<ItemListContainer greeting="Bienvenido a MusicWorld!" />} />
           <Route path='/detail/:detailId' element={<ItemDetailContainer />} />
           <Route path='/cart' element={<CartContainer />} />
-          <Route path="/checkout" element={<Checkout/>}/>
-          <Route path="/orderInfo/:id" element={<OrderInformation />}/>
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/orderInfo/:id' element={<OrderInformation />} />
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </BrowserRouter>
