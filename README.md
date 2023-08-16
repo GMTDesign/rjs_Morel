@@ -23,6 +23,7 @@ $ cd musicworld
 ### Instalación
 $ npm install
 
-# DEMO: https://regal-crostata-421ed6.netlify.app/
 ### Ejecutar la app
 $ npm run dev
+
+### DEMO: https://regal-crostata-421ed6.netlify.app/
